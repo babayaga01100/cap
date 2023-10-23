@@ -1,8 +1,9 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
-from .models import SmartFarmSensor
+from .models import SmartFarmSensor, SmartFarm
 
-class SmartFarmBaseModelSerializer(ModelSerializer):
+
+class SmartFarmBaseModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = SmartFarmSensor
         fields = '__all__'
@@ -10,23 +11,23 @@ class SmartFarmBaseModelSerializer(ModelSerializer):
     
 class InfoListModelSerializer(SmartFarmBaseModelSerializer):
     class Meta(SmartFarmBaseModelSerializer.Meta):
-        fields = [ 
-                #   'sfid', 
-                  'remotepower', 
-                  'temperature', 
+        fields = [
+                #   'sfid',
+                  'remotepower',
+                  'temperature',
                   'humidity']
-        
+
 class LedListModelSerializer(SmartFarmBaseModelSerializer):
     class Meta(SmartFarmBaseModelSerializer.Meta):
-        fields = ['ledpower', 
-                  'ledstate', 
-                  'ledtoggle', 
-                  'ledautotoggle', 
-                  'ledstarttimevalue', 
-                  'ledstartminutevalue', 
-                  'ledendtimevalue', 
+        fields = ['ledpower',
+                  'ledstate',
+                  'ledtoggle',
+                  'ledautotoggle',
+                  'ledstarttimevalue',
+                  'ledstartminutevalue',
+                  'ledendtimevalue',
                   'ledendminutevalue']
-        
+
 class WaterListModelSerializer(SmartFarmBaseModelSerializer):
     class Meta(SmartFarmBaseModelSerializer.Meta):
         fields = ['waterpumppower',
@@ -49,7 +50,7 @@ class FanListModelSerializer(SmartFarmBaseModelSerializer):
             'fanendtimevalue',
             'fanendminutevalue'
         ]
-        
+
 class DoorListModelSerializer(SmartFarmBaseModelSerializer):
     class Meta(SmartFarmBaseModelSerializer.Meta):
         fields = [
@@ -62,7 +63,7 @@ class DoorListModelSerializer(SmartFarmBaseModelSerializer):
                 'doorendtimevalue',
                 'doorendminutevalue'
         ]
-        
+
 class WarningListModelSerializer(SmartFarmBaseModelSerializer):
     class Meta(SmartFarmBaseModelSerializer.Meta):
         fields = [
@@ -72,3 +73,9 @@ class WarningListModelSerializer(SmartFarmBaseModelSerializer):
                 'humwarning',
                 'soilwarning'
         ]
+
+class SFSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SmartFarm
+        fields = '__all__'

@@ -1,4 +1,6 @@
 from django.urls import path
+
+from server.api import RegistrationSF
 from .views import DoorView, FanView, InfoView, LedView, RaspberryView, WarningView, WaterView
 
 app_name = 'server'
@@ -13,7 +15,8 @@ urlpatterns = [
     path('fan', FanView.as_view()),
     path('door', DoorView.as_view()),
     path('warning', WarningView.as_view()),
-    
-    
+
+    path("registration_sf", RegistrationSF.as_view(), name="Registration_SF")
+
 ]
 

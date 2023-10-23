@@ -58,7 +58,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import messaging
 
-json_path = "/home/dfx/naro/cap/smartfarmKey.json"
+json_path = "/home/dfx/naro/newest_cap/smartfarmKey.json"
 path = credentials.Certificate(json_path)
 firebase_admin.initialize_app(path)
 
